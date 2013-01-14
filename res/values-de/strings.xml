@@ -133,8 +133,8 @@
     <string name="weather_retrieve_location_dialog_enable_button">Aktivieren</string>
     <string name="weather_invert_lowhigh">Anzeigereihenfolge Min/Max-Temperatur tauschen</string>
     <string name="weather_progress_title">Standort wird überprüft</string>
-    <string name="weather_alternate_icons_title">Alternative Icons</string>
-    <string name="weather_alternate_icons_summary">Aktivieren, um statt der weißen Standardicons die alternativen, farbigen Icons zu nutzen.</string>
+    <string name="weather_alternate_icons_title">Farbige Icons</string>
+    <string name="weather_alternate_icons_summary">Aktivieren, um statt der alternativen, farbigen AOKP-Icons die, farbigen CM Standardicons zu nutzen.</string>
 
     <!-- Preferences - Calendar -->
     <string name="calendar_title">Nächsten Termin anzeigen</string>
