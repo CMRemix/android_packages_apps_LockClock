@@ -18,16 +18,15 @@ package com.cyanogenmod.lockclock.weather;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 
 import com.cyanogenmod.lockclock.R;
-import com.cyanogenmod.lockclock.misc.Preferences;
+import com.cyanogenmod.lockclock.misc.WidgetUtils;
 
 import java.text.DecimalFormat;
 import java.util.Date;
 
 public class WeatherInfo {
-    private static final long serialVersionUID = 1L;
-
     private static final DecimalFormat sNoDigitsFormat = new DecimalFormat("0");
 
     private Context mContext;
@@ -67,16 +66,21 @@ public class WeatherInfo {
     }
 
     public int getConditionResource() {
-        boolean alternativeIcons = Preferences.useAlternateWeatherIcons(mContext);
-        final String prefix = alternativeIcons ? "weather2_" : "weather_";
         final Resources res = mContext.getResources();
-        final int resId = res.getIdentifier(prefix + conditionCode, "drawable", mContext.getPackageName());
-
+        final int resId = res.getIdentifier("weather2_" + conditionCode, "drawable", mContext.getPackageName());
         if (resId != 0) {
             return resId;
         }
+        return R.drawable.weather2_na;
+    }
 
-        return alternativeIcons ? R.drawable.weather2_na : R.drawable.weather_na;
+    public Bitmap getConditionBitmap(int color) {
+        final Resources res = mContext.getResources();
+        int resId = res.getIdentifier("weather_" + conditionCode, "drawable", mContext.getPackageName());
+        if (resId == 0) {
+            resId = R.drawable.weather_na;
+        }
+        return WidgetUtils.getOverlaidBitmap(mContext, resId, color);
     }
 
     public String getCity() {
@@ -86,11 +90,9 @@ public class WeatherInfo {
     public String getCondition() {
         final Resources res = mContext.getResources();
         final int resId = res.getIdentifier("weather_" + conditionCode, "string", mContext.getPackageName());
-
         if (resId != 0) {
             return res.getString(resId);
         }
-
         return condition;
     }
 

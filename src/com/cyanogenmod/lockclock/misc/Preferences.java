@@ -18,6 +18,7 @@ package com.cyanogenmod.lockclock.misc;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 
 import com.cyanogenmod.lockclock.weather.WeatherInfo;
 
@@ -53,6 +54,62 @@ public class Preferences {
 
     public static boolean useBoldFontForDateAndAlarms(Context context) {
         return getPrefs(context).getBoolean(Constants.CLOCK_FONT_DATE, true);
+    }
+
+    public static int clockFontColor(Context context) {
+        int color = Color.parseColor(getPrefs(context).getString(Constants.CLOCK_FONT_COLOR,
+                Constants.DEFAULT_LIGHT_COLOR));
+        return color;
+    }
+
+    public static int clockAlarmFontColor(Context context) {
+        int color = Color.parseColor(getPrefs(context).getString(Constants.CLOCK_ALARM_FONT_COLOR,
+                Constants.DEFAULT_DARK_COLOR));
+        return color;
+    }
+
+    public static int weatherFontColor(Context context) {
+        int color = Color.parseColor(getPrefs(context).getString(Constants.WEATHER_FONT_COLOR,
+                Constants.DEFAULT_LIGHT_COLOR));
+        return color;
+    }
+
+    public static int weatherTimestampFontColor(Context context) {
+        int color = Color.parseColor(getPrefs(context).getString(Constants.WEATHER_TIMESTAMP_FONT_COLOR,
+                Constants.DEFAULT_DARK_COLOR));
+        return color;
+    }
+
+    public static int calendarFontColor(Context context) {
+        int color = Color.parseColor(getPrefs(context).getString(Constants.CALENDAR_FONT_COLOR,
+                Constants.DEFAULT_LIGHT_COLOR));
+        return color;
+    }
+
+    public static int calendarDetailsFontColor(Context context) {
+        int color = Color.parseColor(getPrefs(context).getString(Constants.CALENDAR_DETAILS_FONT_COLOR,
+                Constants.DEFAULT_DARK_COLOR));
+        return color;
+    }
+
+    public static boolean calendarHighlightUpcomingEvents(Context context) {
+        return getPrefs(context).getBoolean(Constants.CALENDAR_HIGHLIGHT_UPCOMING_EVENTS, false);
+    }
+
+    public static boolean calendarUpcomingEventsBold(Context context) {
+        return getPrefs(context).getBoolean(Constants.CALENDAR_UPCOMING_EVENTS_BOLD, false);
+    }
+
+    public static int calendarUpcomingEventsFontColor(Context context) {
+        int color = Color.parseColor(getPrefs(context).getString(Constants.CALENDAR_UPCOMING_EVENTS_FONT_COLOR,
+                Constants.DEFAULT_LIGHT_COLOR));
+        return color;
+    }
+
+    public static int calendarUpcomingEventsDetailsFontColor(Context context) {
+        int color = Color.parseColor(getPrefs(context).getString(Constants.CALENDAR_UPCOMING_EVENTS_DETAILS_FONT_COLOR,
+                Constants.DEFAULT_DARK_COLOR));
+        return color;
     }
 
     public static boolean showWeatherWhenMinimized(Context context) {
@@ -131,7 +188,7 @@ public class Preferences {
     }
 
     public static long lookAheadTimeInMs(Context context) {
-        return Long.parseLong(getPrefs(context).getString(Constants.CALENDAR_LOOKAHEAD, "10800000"));
+        return Long.parseLong(getPrefs(context).getString(Constants.CALENDAR_LOOKAHEAD, "1209600000"));
     }
 
     public static final int SHOW_NEVER = 0;
