@@ -315,13 +315,7 @@ public class ClockWidgetService extends IntentService {
         boolean colorIcons = Preferences.useAlternateWeatherIcons(this);
 
         // Weather Image
-        if (colorIcons) {
-            // No additional color overlays needed
-            weatherViews.setImageViewResource(R.id.weather_image, w.getConditionResource());
-        } else {
-            // Overlay the condition image with the appropriate color
-            weatherViews.setImageViewBitmap(R.id.weather_image, w.getConditionBitmap(color));
-        }
+        weatherViews.setImageViewResource(R.id.weather_image, w.getConditionResource());
 
         // Weather Condition
         weatherViews.setTextViewText(R.id.weather_condition, w.getCondition());
