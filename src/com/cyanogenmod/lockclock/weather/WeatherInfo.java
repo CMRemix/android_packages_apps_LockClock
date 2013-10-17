@@ -32,6 +32,7 @@ public class WeatherInfo {
 
     private Context mContext;
 
+    private String id;
     private String city;
     private String forecastDate;
     private String condition;
@@ -46,11 +47,12 @@ public class WeatherInfo {
     private String speedUnit;
     private long timestamp;
 
-    public WeatherInfo(Context context,
+    public WeatherInfo(Context context, String id,
             String city, String fdate, String condition, int conditionCode,
             float temp, float low, float high, String tempUnit, float humidity,
             float wind, int windDir, String speedUnit, long timestamp) {
-        this.mContext = context;
+        this.mContext = context.getApplicationContext();
+        this.id = id;
         this.city = city;
         this.forecastDate = fdate;
         this.condition = condition;
@@ -75,6 +77,10 @@ public class WeatherInfo {
             return resId;
         }
         return alternativeIcons ? R.drawable.weather2_na : R.drawable.weather_na; 
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getCity() {
@@ -146,7 +152,9 @@ public class WeatherInfo {
         StringBuilder builder = new StringBuilder();
         builder.append("WeatherInfo for ");
         builder.append(city);
-        builder.append("@ ");
+        builder.append(" (");
+        builder.append(id);
+        builder.append(") @ ");
         builder.append(getTimestamp());
         builder.append(": ");
         builder.append(getCondition());
@@ -169,6 +177,7 @@ public class WeatherInfo {
 
     public String toSerializedString() {
         StringBuilder builder = new StringBuilder();
+        builder.append(id).append('|');
         builder.append(city).append('|');
         builder.append(forecastDate).append('|');
         builder.append(condition).append('|');
@@ -191,7 +200,7 @@ public class WeatherInfo {
         }
 
         String[] parts = input.split("\\|");
-        if (parts == null || parts.length != 13) {
+        if (parts == null || parts.length != 14) {
             return null;
         }
 
@@ -200,21 +209,22 @@ public class WeatherInfo {
         float temperature, low, high, humidity, wind;
 
         try {
-            conditionCode = Integer.parseInt(parts[3]);
-            temperature = Float.parseFloat(parts[4]);
-            low = Float.parseFloat(parts[5]);
-            high = Float.parseFloat(parts[6]);
-            humidity = Float.parseFloat(parts[8]);
-            wind = Float.parseFloat(parts[9]);
-            windDirection = Integer.parseInt(parts[10]);
-            timestamp = Long.parseLong(parts[12]);
+            conditionCode = Integer.parseInt(parts[4]);
+            temperature = Float.parseFloat(parts[5]);
+            low = Float.parseFloat(parts[6]);
+            high = Float.parseFloat(parts[7]);
+            humidity = Float.parseFloat(parts[9]);
+            wind = Float.parseFloat(parts[10]);
+            windDirection = Integer.parseInt(parts[11]);
+            timestamp = Long.parseLong(parts[13]);
         } catch (NumberFormatException e) {
             return null;
         }
 
         return new WeatherInfo(context,
-                /* city */ parts[0], /* date */ parts[1], /* condition */ parts[2],
-                conditionCode, temperature, low, high, /* tempUnit */ parts[7],
-                humidity, wind, windDirection, /* speedUnit */ parts[11], timestamp);
+                /* id */ parts[0], /* city */ parts[1], /* date */ parts[2],
+                /* condition */ parts[3], conditionCode, temperature, low, high,
+                /* tempUnit */ parts[8], humidity, wind, windDirection,
+                /* speedUnit */ parts[12], timestamp);
     }
 }
