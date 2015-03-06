@@ -116,8 +116,8 @@
   <string name="weather_refresh_interval">Atnaujinimo intervalas</string>
   <string name="weather_use_metric">Naudoti metrinę sistemą</string>
   <string name="weather_retrieve_location_dialog_title">Nepavyksta nustatyti vietovės!</string>
-  <string name="weather_retrieve_location_dialog_message">Tinklo geolokacija išjungta.\n\nNustatykite individualią vietovę, arba įjunkite tinklo vietovę</string>
-  <string name="weather_retrieve_location_dialog_enable_button">Įjungti</string>
+  <string name="weather_retrieve_location_dialog_message">Tinklo geolokacija neleidžiama.\n\nNustatykite tinkintą vietovę, arba įgalinkite tinklo vietovę</string>
+  <string name="weather_retrieve_location_dialog_enable_button">Įgalinti</string>
   <string name="weather_invert_lowhigh">Sukeisti žemą / aukštą temperatūras</string>
   <string name="weather_progress_title">Tikrinama vietovė</string>
   <string name="weather_alternate_icons_title">Naudoti spalvotas piktogramas</string>
