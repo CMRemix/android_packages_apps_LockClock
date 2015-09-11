@@ -19,7 +19,7 @@
   <string name="unknown">Bilinmeyen</string>
   <string name="cancel">İptal</string>
   <string name="loading_indicator">Widget yükleniyor\u2026</string>
-  <string name="menu_done">Tamamlandı</string>
+  <string name="menu_done">Tamam</string>
   <string name="weather_0">Tornado</string>
   <string name="weather_1">Tropik Fırtına</string>
   <string name="weather_2">Kasırga</string>
@@ -143,6 +143,8 @@
   <string name="font_color_alarm">Alarm yazı rengi</string>
   <string name="font_color_timestamp">Zaman damgası yazı rengi</string>
   <string name="font_color_calendar_details">Detaylar yazı rengi</string>
+  <string name="background_color">Arka plan rengi</string>
+  <string name="background_transparency">Arka plan saydamlığı</string>
   <string name="calendar_lookahead_3hrs">3 saat</string>
   <string name="calendar_lookahead_6hrs">6 saat</string>
   <string name="calendar_lookahead_12hrs">12 saat</string>
